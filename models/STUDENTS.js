@@ -16,7 +16,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     lastName: {
       type: DataTypes.STRING(20),
-      allowNull: true
+      allowNull: false
+    },
+    program: {
+      type: DataTypes.STRING(30),
+      allowNull: false
     },
     code: {
       type: DataTypes.STRING(10),

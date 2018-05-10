@@ -22,6 +22,14 @@ module.exports = function(sequelize, DataTypes) {
         key: 'idStudent'
       }
     },
+    idLesson: {
+      type: DataTypes.INTEGER(11),
+      allowNull: true,
+      references: {
+        model: 'LESSON',
+        key: 'idLesson'
+      }
+    },
     idManager: {
       type: DataTypes.INTEGER(11),
       allowNull: true,
@@ -30,33 +38,25 @@ module.exports = function(sequelize, DataTypes) {
         key: 'idManager'
       }
     },
-    location: {
-      type: DataTypes.STRING(8),
-      allowNull: false
-    },
-    program: {
-      type: DataTypes.STRING(30),
-      allowNull: false
-    },
-    content: {
-      type: DataTypes.STRING(30),
-      allowNull: false
-    },
     practics: {
       type: DataTypes.STRING(30),
       allowNull: false
     },
-    dateSolictude: {
+    solicitedAt: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    dateSolicitude: {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
     timeInit: {
       type: DataTypes.TIME,
-      allowNull: false
+      allowNull: true
     },
     timeEnd: {
       type: DataTypes.TIME,
-      allowNull: false
+      allowNull: true
     },
     estado: {
       type: DataTypes.STRING(10),

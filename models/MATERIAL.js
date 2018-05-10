@@ -8,7 +8,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     idLaboratory: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'LABORATORY',
+        key: 'idLaboratory'
+      }
     },
     nameMaterial: {
       type: DataTypes.STRING(40),
