@@ -1,6 +1,6 @@
 use apiducodb;
 
-create table STUDENTS ( 
+create table STUDENTS( 
     idStudent int not null auto_increment primary key,
     document varchar(12) not null,
     firstName varchar(20) not null,
@@ -10,20 +10,20 @@ create table STUDENTS (
     age int not null
 );
 
-create table MANAGERS (
+create table MANAGERS(
     idManager int not null auto_increment primary key,
     firstName varchar(20),
     lastName varchar(20),
     identification varchar(20)
 );
 
-create table LABORATORY(
+create table LABORATORIES(
     idLaboratory int not null auto_increment primary key,
     nameLaboratory varchar(20) not null,
     location varchar(8) not null
 );
 
-create table TEACHER (
+create table TEACHERS(
     idTeacher int not null auto_increment primary key,
     name varchar (20),
     lastName varchar (20),
@@ -31,19 +31,19 @@ create table TEACHER (
     program varchar(20)
 );
  
-create table LESSON(
-    idLesson int not null primary key,
+create table LESSONS(
+    idLesson int not null auto_increment primary key,
     idTeacher int not null,
     idLaboratory int not null,
     nameLesson varchar (30) not null,
     groupLesson int not null
 );
 
-ALTER TABLE LESSON ADD CONSTRAINT LESSON_TEACHER_FK FOREIGN KEY (idTeacher) REFERENCES TEACHER(idTeacher); 
+ALTER TABLE LESSONS ADD CONSTRAINT LESSON_TEACHER_FK FOREIGN KEY (idTeacher) REFERENCES TEACHERS(idTeacher); 
  
-ALTER TABLE LESSON ADD CONSTRAINT LESSON_LABORATORY_FK FOREIGN KEY (idLaboratory) REFERENCES LABORATORY(idLaboratory);
+ALTER TABLE LESSONS ADD CONSTRAINT LESSON_LABORATORY_FK FOREIGN KEY (idLaboratory) REFERENCES LABORATORIES(idLaboratory);
 
-create table SCHEDULE(
+create table SCHEDULES(
     idSchedule int not null auto_increment primary key,
     idLesson int not null,
     dayOfWeek varchar(1) not null,
@@ -51,9 +51,9 @@ create table SCHEDULE(
     timeEnd time not null
 );
  
-ALTER TABLE SCHEDULE ADD CONSTRAINT SCHEDULE_LESSON_FK FOREIGN KEY (idLesson) REFERENCES LESSON(idLesson);
+ALTER TABLE SCHEDULES ADD CONSTRAINT SCHEDULE_LESSON_FK FOREIGN KEY (idLesson) REFERENCES LESSONS(idLesson);
 
-create table MATERIAL (
+create table MATERIALS(
     idMaterial int not null auto_increment primary key,
     idLaboratory int not null, 
     nameMaterial varchar(40) not null,
@@ -63,9 +63,9 @@ create table MATERIAL (
     state varchar(15) not null 
 );
  
-ALTER TABLE MATERIAL ADD CONSTRAINT MATERIAL_LABORATORY_FK FOREIGN KEY (idLaboratory) REFERENCES LABORATORY(idLaboratory);
+ALTER TABLE MATERIALS ADD CONSTRAINT MATERIAL_LABORATORY_FK FOREIGN KEY (idLaboratory) REFERENCES LABORATORIES(idLaboratory);
 
-create table SOLICITUDE (
+create table SOLICITUDE(
     idSolicitude int not null auto_increment primary key,
     idLaboratory int not null,
     idStudent int not null,
@@ -79,11 +79,11 @@ create table SOLICITUDE (
     estado varchar (10) not null
 );
 
-ALTER TABLE SOLICITUDE ADD CONSTRAINT SOLICITUDE_LABORATORY_FK FOREIGN KEY (idLaboratory) REFERENCES LABORATORY(idLaboratory);
+ALTER TABLE SOLICITUDE ADD CONSTRAINT SOLICITUDE_LABORATORY_FK FOREIGN KEY (idLaboratory) REFERENCES LABORATORIES(idLaboratory);
 
 ALTER TABLE SOLICITUDE ADD CONSTRAINT SOLICITUDE_STUDENT_FK FOREIGN KEY (idStudent) REFERENCES STUDENTS(idStudent);
 
-ALTER TABLE SOLICITUDE ADD CONSTRAINT SOLICITUDE_LESSON_FK FOREIGN KEY (idLesson) REFERENCES LESSON(idLesson);
+ALTER TABLE SOLICITUDE ADD CONSTRAINT SOLICITUDE_LESSON_FK FOREIGN KEY (idLesson) REFERENCES LESSONS(idLesson);
  
 ALTER TABLE SOLICITUDE ADD CONSTRAINT SOLICITUDE_MANAGER_FK FOREIGN KEY (idManager) REFERENCES MANAGERS(idManager);
  
@@ -95,4 +95,4 @@ create table MATERIAL_SOLICITUDE(
 
 ALTER TABLE MATERIAL_SOLICITUDE ADD CONSTRAINT SOLICITUDE_MATERIAL_FK FOREIGN KEY (idSolicitude) REFERENCES SOLICITUDE(idSolicitude);
 
-ALTER TABLE MATERIAL_SOLICITUDE ADD CONSTRAINT MATERIAL_SOLICITUDE_FK FOREIGN KEY (idMaterial) REFERENCES MATERIAL(idMaterial);
+ALTER TABLE MATERIAL_SOLICITUDE ADD CONSTRAINT MATERIAL_SOLICITUDE_FK FOREIGN KEY (idMaterial) REFERENCES MATERIALS(idMaterial);
