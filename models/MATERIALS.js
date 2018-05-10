@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('MATERIAL', {
+  return sequelize.define('MATERIALS', {
     idMaterial: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'LABORATORY',
+        model: 'LABORATORIES',
         key: 'idLaboratory'
       }
     },
@@ -35,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'MATERIAL',
+    tableName: 'MATERIALS',
     timestamps: false
   });
 };

@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('SCHEDULE', {
+  return sequelize.define('SCHEDULES', {
     idSchedule: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'LESSON',
+        model: 'LESSONS',
         key: 'idLesson'
       }
     },
@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'SCHEDULE',
+    tableName: 'SCHEDULES',
     timestamps: false
   });
 };

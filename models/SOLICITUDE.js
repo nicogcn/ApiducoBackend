@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'LABORATORY',
+        model: 'LABORATORIES',
         key: 'idLaboratory'
       }
     },
@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: true,
       references: {
-        model: 'LESSON',
+        model: 'LESSONS',
         key: 'idLesson'
       }
     },

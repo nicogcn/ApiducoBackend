@@ -1,15 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('LESSON', {
+  return sequelize.define('LESSONS', {
     idLesson: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement: true
     },
     idTeacher: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'TEACHER',
+        model: 'TEACHERS',
         key: 'idTeacher'
       }
     },
@@ -17,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       references: {
-        model: 'LABORATORY',
+        model: 'LABORATORIES',
         key: 'idLaboratory'
       }
     },
@@ -30,7 +31,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'LESSON',
+    tableName: 'LESSONS',
     timestamps: false
   });
 };
