@@ -8,7 +8,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     idLaboratory: {
       type: DataTypes.INTEGER(11),
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'LABORATORY',
+        key: 'idLaboratory'
+      }
     },
     idStudent: {
       type: DataTypes.INTEGER(11),
@@ -20,7 +24,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     idManager: {
       type: DataTypes.INTEGER(11),
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'MANAGERS',
+        key: 'idManager'
+      }
     },
     location: {
       type: DataTypes.STRING(8),
@@ -55,6 +63,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'SOLICITUDE'
+    tableName: 'SOLICITUDE',
+    timestamps: false
   });
 };

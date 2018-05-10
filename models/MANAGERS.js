@@ -1,12 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('TEACHER', {
-    idTeacher: {
+  return sequelize.define('MANAGERS', {
+    idManager: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    name: {
+    firstName: {
       type: DataTypes.STRING(20),
       allowNull: true
     },
@@ -17,13 +17,9 @@ module.exports = function(sequelize, DataTypes) {
     identification: {
       type: DataTypes.STRING(20),
       allowNull: true
-    },
-    program: {
-      type: DataTypes.STRING(20),
-      allowNull: true
     }
   }, {
-    tableName: 'TEACHER',
+    tableName: 'MANAGERS',
     timestamps: false
   });
 };

@@ -1,5 +1,3 @@
-/* jshint indent: 2 */
-
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('MATERIAL_SOLICITUDE', {
     idMaterialSolicitude: {
@@ -25,6 +23,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   }, {
-    tableName: 'MATERIAL_SOLICITUDE'
+    tableName: 'MATERIAL_SOLICITUDE',
+    timestamps: false
   });
 };
