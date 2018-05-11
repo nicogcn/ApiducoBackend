@@ -1,34 +1,39 @@
 /**
- *@author: 3Y2J
+ *@author: Yessica Martinez
  * <br>Description: </br> definición de los metodos de acceso modulo profesores	
  */
 
 //IMPORTO LOS MODELOS ....
 var models = require("../../models");
 
-// Obtener profesor por ID
-exports.getTeachersById = function (req, res) {
-    //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
-    models.TEACHERS.findById(req.params.id).then(function(teacher){
-       console.log(teacher.name + ' found') 
-        res.status(200).json(teacher);
-    });
-
-// Obtener todos los profesores
-exports.getAllTeachers = function (req, res) {
-    models.TEACHERS.all().then(function(teachers) { 
-        console.log('There is ' + teachers.length + ' teachers');
-        res.status(200).json(teacher);
+// Obtener todos los materiales
+exports.getAllMaterials = function (req, res) {
+    models.MATERIALS.all().then(function(materiales) { 
+        console.log('There is ' + materiales.length + ' materials');
+        res.status(200).json(materials);
     });
 };
 
-// Obtener asignatura dictada por el profesor
-exports.getLesson = funtion(req, res){
-    models.TEACHERS.findById(req.params.id).then(function(teacher){
-    	console.log(teacher + ' dicta ' + teacher.getLesson); 
-    	res.status(200).json(teacher);
+// Obtener materiales por estado
+exports.getMaterialByState = function (req, res) {
+    models.MATERIALS.findAll({where:{state:req.params.state}}).then(function(materials){
+       console.log('The state of ' + materials.length + ' materials' );
+       res.status(200).json(materials);
+    });
+};
+
+//materiales por laboratorio
+exports.getMaterialByLaboratory = function (req, res) {
+    models.MATERIALS.findAll({where:{idLaboratory:req.params.id}}).then(function(materials){
+       console.log('the material ' + materials.length + 'of Laboratory');
+       res.status(200).json(materials);
     });
 };
 
 
-};
+
+
+
+
+
+
