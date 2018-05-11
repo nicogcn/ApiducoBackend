@@ -73,3 +73,11 @@ exports.deleteStudent = function (req, res){
         res.status(204).send();
     });
 };
+
+//Get solicitudes per student 
+exports.getSolicitudes = function (req, res){
+    models.SOLICITUDE.findAll({where:{idStudent:req.params.id}}).then(function(solicitudes){
+        console.log('There is ' + solicitudes.length + ' solicitude for the student ' + req.params.id);
+        res.status(200).json(solicitudes);
+    });    
+};

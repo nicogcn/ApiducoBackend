@@ -10,4 +10,6 @@ router.get('/',controller.getAllStudents);
 router.get('/:id',controller.getStudentById);
 router.put('/:id',controller.updateStudent);
 router.delete('/:id',controller.deleteStudent);
+router.get('/:id/solicitude',controller.getSolicitudes);
+
 module.exports = router;
