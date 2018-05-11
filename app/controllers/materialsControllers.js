@@ -13,7 +13,6 @@ exports.getTeachersById = function (req, res) {
        console.log(teacher.name + ' found') 
         res.status(200).json(teacher);
     });
-};
 
 // Obtener todos los profesores
 exports.getAllTeachers = function (req, res) {
@@ -24,9 +23,12 @@ exports.getAllTeachers = function (req, res) {
 };
 
 // Obtener asignatura dictada por el profesor
-exports.getAsignaturas = function (req, res){
-    models.LESSONS.findAll({where:{idTeacher:req.params.id}}).then(function(lessons){
-        console.log('There is ' + lessons.length + ' lessons for the teacher ' + req.params.id);
-        res.status(200).json(lessons);
-    });    
+exports.getLesson = funtion(req, res){
+    models.TEACHERS.findById(req.params.id).then(function(teacher){
+    	console.log(teacher + ' dicta ' + teacher.getLesson); 
+    	res.status(200).json(teacher);
+    });
+};
+
+
 };
