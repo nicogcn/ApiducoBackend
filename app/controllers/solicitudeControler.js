@@ -18,43 +18,33 @@ exports.createSolicitude = function (req, res) { //req -> http request , res -> 
 };
 //ELIMINAR SOLICITUDE |delete|
 exports.deleteSolicitude = function (req, res){
-    models.SOLICITUDE.destroy({where:{idSolicitude:req.params.id}}).then(function (deleted){
-        //OPERADOR TERNARIO <- una excelente practica de programación. 
-        console.log(deleted == 1 ? 'Deleted record completed sucesfully' : 'The record not exist');
-        res.status(204).send();
-    });
+    
 };
 //leer solicitud para el dia
 exports.getSolicitudeBydate = function (req, res) {
-    //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
-    models.SOLICITUDE.findBydate(req.params.id).then(function(solicitude){
-       console.log(solicitude.dateSolicitude + ' found') 
+    models.SOLICITUDE.findAll({where:{dateSolicitude:req.body.date}}).then(function(solicitude){
+       console.log('there is ' + solicitude.length + ' solicitude for the date' + req.body.date); 
         res.status(200).json(solicitude);
     });
 };
 //leer solicituddes por estado
 exports.getSolicitudeByestado = function (req, res) {
-    //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
-    models.SOLICITUDE.findByestado(req.params.id).then(function(solicitude){
-       console.log(solicitude.estado + ' found') 
+    models.SOLICITUDE.findAll({where:{state:req.body.state}}).then(function(solicitude){
+       console.log('there is ' + solicitude.length + ' solicitude with state: ' + req.body.state); 
         res.status(200).json(solicitude);
     });
 };
 //leer solicitud gestionada por manager
 exports.getsolicitudeBymanager = function (req, res) {
-    //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
-    models.SOLICITUDE.findById(req.params.id).then(function(solicitude){
-       console.log(solicitude.idManager + ' found') 
-        res.status(200).json(solicitide);
+    models.SOLICITUDE.findAll({where:{idManager:req.body.manager}}).then(function(solicitude){
+       console.log('there is ' + solicitude.length + ' gestioned by the manager: ' + req.body.manager); 
+        res.status(200).json(solicitude);
     });
 };
 
 
 //obtener lista de materiales
 exports.getSolicitudeBymaterialList = function (req, res) {
-    //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
-    models.MATERIAL_SOLICITUDE.findById(req.params.id).then(function(student){
-      console.log('There is ' + material_solicitude.length + ' material solicitude');
-        res.status(200).json(material_solicitude);
-    });
+    //por implementar
+    
 };

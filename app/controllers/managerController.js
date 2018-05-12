@@ -9,7 +9,7 @@ var models = require("../../models");
 exports.getManagerById = function (req, res) {
     //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
     models.MANAGERS.findById(req.params.id).then(function(managers){
-       console.log(managers.name + ' found') 
+       console.log(managers.name + ' found');
         res.status(200).json(manager);
     });
 };

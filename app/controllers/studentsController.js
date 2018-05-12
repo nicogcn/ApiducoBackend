@@ -48,7 +48,7 @@ exports.getAllStudents = function (req, res) {
 exports.getStudentById = function (req, res) {
     //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
     models.STUDENTS.findById(req.params.id).then(function(student){
-       console.log(student.firstName + ' found') 
+       console.log(student.firstName + ' found');
         res.status(200).json(student);
     });
 };

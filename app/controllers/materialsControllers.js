@@ -17,7 +17,7 @@ exports.getAllMaterials = function (req, res) {
 // Obtener materiales por estado
 exports.getMaterialByState = function (req, res) {
     models.MATERIALS.findAll({where:{state:req.params.state}}).then(function(materials){
-       console.log('The state of ' + materials.length + ' materials' );
+       console.log('there is ' + materials.length + ' materials with state: ' + req.params.state);
        res.status(200).json(materials);
     });
 };
@@ -25,7 +25,7 @@ exports.getMaterialByState = function (req, res) {
 //materiales por laboratorio
 exports.getMaterialByLaboratory = function (req, res) {
     models.MATERIALS.findAll({where:{idLaboratory:req.params.id}}).then(function(materials){
-       console.log('the material ' + materials.length + 'of Laboratory');
+       console.log('there is ' + materials.length + ' material of laboratory ' + req.params.id);
        res.status(200).json(materials);
     });
 };

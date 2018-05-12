@@ -24,7 +24,7 @@ exports.getAllTeachers = function (req, res) {
 };
 
 // Obtener asignatura dictada por el profesor
-exports.getAsignaturas = function (req, res){
+exports.getLessons = function (req, res){
     models.LESSONS.findAll({where:{idTeacher:req.params.id}}).then(function(lessons){
         console.log('There is ' + lessons.length + ' lessons for the teacher ' + req.params.id);
         res.status(200).json(lessons);

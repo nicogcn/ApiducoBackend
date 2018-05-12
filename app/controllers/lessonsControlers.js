@@ -16,14 +16,14 @@ exports.getLessonsById = function (req, res) {
 //obtener asignatura por laboratorio
 exports.getLessonsByLaboratory = function (req, res) {
     models.LESSONS.findAll({where:{idLaboratory:req.params.id}}).then(function(lessons){
-       console.log('the lessons ' + lessons.length + 'by Laboratory');
+       console.log('there are ' + lessons.length + ' lessons in laboratory: ' + req.params.id);
        res.status(200).json(lessons);
     });
 };
 //obtener horario por asignatura
 exports.getSchedulesByLessons = function (req, res) {
-    models.SCHEDULES.findAll({where:{idLaboratory:req.params.id}}).then(function(Schedules){
-       console.log('the Schedules ' + Schedules.length + 'by lessons');
-       res.status(200).json(Schedules);
+    models.SCHEDULES.findAll({where:{idLaboratory:req.params.id}}).then(function(schedules){
+       console.log('there are ' + schedules.length + ' schedules for the lesson: ' + req.params.id);
+       res.status(200).json(schedules);
     });
 };

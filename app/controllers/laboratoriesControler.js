@@ -32,9 +32,5 @@ exports.getLessonsByLaboratory = function (req, res) {
 
 //Obtener los horarios de las clases que se dan en el laboratorio
 exports.getSchedulesByLaboratory = function (req, res) {
-    models.SCHEDULES.findAll({where:{idLaboratory:req.params.id}}).then(function(schedules){
-       console.log('the schedules' + schedules.length + 'by Laboratory');
-       res.status(200).json(schedules);
-    });
-}
+    //por implementar
 };
