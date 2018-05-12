@@ -6,6 +6,14 @@
 //IMPORTO LOS MODELOS ....
 var models = require("../../models");
 //OBTENER ASIGNATURA
+exports.getAllLessons = function (req, res) {
+    //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
+ 	models.LESSONS.all().then(function(lessons){
+       console.log('There is ' + lessons.length + ' lessons');
+        res.status(200).json(lessons);
+    });
+};
+
 exports.getLessonsById = function (req, res) {
     //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
  	models.LESSONS.findById(req.params.id).then(function(lessons){

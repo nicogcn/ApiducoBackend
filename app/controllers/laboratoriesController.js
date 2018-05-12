@@ -15,17 +15,17 @@ exports.getAllLaboratories = function (req, res) {
 };
 
 //Obtener laboratorios por ID
-exports.getlaboratoriesById = function (req, res) {
-    models.LABORATORIES.findById(req.params.id).then(function(laboratories){
-       console.log(laboratoriesName + ' found') 
-        res.status(200).json(laboratories);
+exports.getlaboratoryById = function (req, res) {
+    models.LABORATORIES.findById(req.params.id).then(function(laboratory){
+       console.log(laboratory.nameLaboratory + ' found') 
+        res.status(200).json(laboratory);
     });
 };
 
 //Obtener asignaturas que se dictan en un laboratorio 
 exports.getLessonsByLaboratory = function (req, res) {
     models.LESSONS.findAll({where:{idLaboratory:req.params.id}}).then(function(lessons){
-       console.log('the lessons ' + lessons.length + 'by Laboratory');
+       console.log('there are ' + lessons.length + 'lessons for the laboratory: ' + req.params.id);
        res.status(200).json(lessons);
     });
 };

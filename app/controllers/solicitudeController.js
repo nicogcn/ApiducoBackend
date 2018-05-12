@@ -17,34 +17,32 @@ exports.createSolicitude = function (req, res) { //req -> http request , res -> 
     });
 };
 //ELIMINAR SOLICITUDE |delete|
-exports.deleteSolicitude = function (req, res){
+exports.cancelSolicitude = function (req, res){
     
 };
 //leer solicitud para el dia
-exports.getSolicitudeBydate = function (req, res) {
+exports.getSolicitudeByDate = function (req, res) {
     models.SOLICITUDE.findAll({where:{dateSolicitude:req.body.date}}).then(function(solicitude){
        console.log('there is ' + solicitude.length + ' solicitude for the date' + req.body.date); 
         res.status(200).json(solicitude);
     });
 };
 //leer solicituddes por estado
-exports.getSolicitudeByestado = function (req, res) {
+exports.getSolicitudeByState= function (req, res) {
     models.SOLICITUDE.findAll({where:{state:req.body.state}}).then(function(solicitude){
        console.log('there is ' + solicitude.length + ' solicitude with state: ' + req.body.state); 
         res.status(200).json(solicitude);
     });
 };
 //leer solicitud gestionada por manager
-exports.getsolicitudeBymanager = function (req, res) {
+exports.getsolicitudeByManager = function (req, res) {
     models.SOLICITUDE.findAll({where:{idManager:req.body.manager}}).then(function(solicitude){
        console.log('there is ' + solicitude.length + ' gestioned by the manager: ' + req.body.manager); 
         res.status(200).json(solicitude);
     });
 };
-
-
 //obtener lista de materiales
-exports.getSolicitudeBymaterialList = function (req, res) {
+exports.getMaterialList = function (req, res) {
     //por implementar
     
 };
