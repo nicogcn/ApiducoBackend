@@ -14,6 +14,12 @@ var dateFormat = require('dateformat');
 //Body post parse
 app.use(bodyParser.json());
 app.use(express.json());
+//Metho origin
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    next();
+});
 //Routes
 app.use('/laboratories', laboratoriesRoutes);
 app.use('/lessons', lessonsRoutes);

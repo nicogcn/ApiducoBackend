@@ -5,11 +5,19 @@
 
 //IMPORTO LOS MODELOS ....
 var models = require("../../models");
+
+exports.getAllManagers = function (req, res) {
+    //Para APIDUCO no es necesario obtener todos los estudiantes, solo es el ejemplo de como obtener todos los registros de una tabla.
+    models.MANAGERS.all().then(function(managers) { 
+        console.log('There is ' + managers.length + ' managers');
+        res.status(200).json(managers);
+    });
+};
 //Obtener laboratorista por id
 exports.getManagerById = function (req, res) {
     //En las peticiones tipo GET los parametros viene en la ruta (URL) quedan guardados en 'req.params'
-    models.MANAGERS.findById(req.params.id).then(function(managers){
-       console.log(managers.name + ' found');
+    models.MANAGERS.findById(req.params.id).then(function(manager){
+       console.log(manager.firstName + ' found');
         res.status(200).json(manager);
     });
 };

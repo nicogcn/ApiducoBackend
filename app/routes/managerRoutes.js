@@ -5,6 +5,7 @@ var router = express.Router();
 //Obtengo el controlador de estudiantes
 var controller = require("../controllers/managerController");
 
+router.get('/',controller.getAllManagers);
 router.post('/', controller.createManager);
 router.get('/:id',controller.getManagerById);
 router.put('/:id',controller.updateManager);
