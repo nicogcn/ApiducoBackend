@@ -10,6 +10,6 @@ router.post('/date',controller.getSolicitudeByDate);
 router.post('/state',controller.getSolicitudeByDate);
 router.post('/manager',controller.getsolicitudeByManager);
 //router.put('/:id',controller.cancelSolicitude); por implementar
-//router.get('/:id/materials',controller.getMaterialList); por implementar
+router.get('/:id/materials',controller.getMaterialList);
 
 module.exports = router;

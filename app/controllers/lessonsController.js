@@ -30,7 +30,7 @@ exports.getLessonsByLaboratory = function (req, res) {
 };
 //obtener horario por asignatura
 exports.getSchedulesByLessons = function (req, res) {
-    models.SCHEDULES.findAll({where:{idLaboratory:req.params.id}}).then(function(schedules){
+    models.SCHEDULES.findAll({where:{idlesson:req.params.id}}).then(function(schedules){
        console.log('there are ' + schedules.length + ' schedules for the lesson: ' + req.params.id);
        res.status(200).json(schedules);
     });

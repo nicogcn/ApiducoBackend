@@ -5,6 +5,6 @@ var controller = require("../controllers/teachersController");
 
 router.get('/',controller.getAllTeachers);
 router.get('/:id',controller.getTeachersById);
-router.get('/:id/lesson',controller.getLessons);
+router.get('/:id/lessons',controller.getLessons);
 
 module.exports = router;

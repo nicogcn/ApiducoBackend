@@ -8,8 +8,8 @@ var models = require("../../models");
 
 // Obtener todos los materiales
 exports.getAllMaterials = function (req, res) {
-    models.MATERIALS.all().then(function(materiales) { 
-        console.log('There is ' + materiales.length + ' materials');
+    models.MATERIALS.all().then(function(materials) { 
+        console.log('There is ' + materials.length + ' materials');
         res.status(200).json(materials);
     });
 };

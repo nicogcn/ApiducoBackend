@@ -19,7 +19,7 @@ exports.getTeachersById = function (req, res) {
 exports.getAllTeachers = function (req, res) {
     models.TEACHERS.all().then(function(teachers) { 
         console.log('There is ' + teachers.length + ' teachers');
-        res.status(200).json(teacher);
+        res.status(200).json(teachers);
     });
 };
 
