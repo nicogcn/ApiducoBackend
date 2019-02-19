@@ -5,6 +5,7 @@ var router = express.Router();
 //Obtengo el controlador de estudiantes
 var controller = require("../controllers/solicitudeController");
 
+router.get('/',controller.getSolicitudeList);
 router.post('/', controller.createSolicitude);
 router.post('/date',controller.getSolicitudeByDate);
 router.post('/state',controller.getSolicitudeByDate);
